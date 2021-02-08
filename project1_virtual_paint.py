@@ -45,7 +45,7 @@ def findColor(img, myColors, myColorValues):
         lower = np.array(color[0:3])
         upper = np.array(color[3:6])
         mask = cv2.inRange(imgHSV, lower, upper)
-        # 위애서 정의한 컨투어 함수를 적용한다.
+        # 위에서 정의한 컨투어 함수를 적용한다.
         x, y = getContours(mask)
         cv2.circle(imgResult, (x,y), 10, myColorValues[count] ,cv2.FILLED)
 

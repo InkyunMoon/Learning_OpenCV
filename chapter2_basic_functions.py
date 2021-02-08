@@ -17,7 +17,7 @@ imgBlur = cv2.GaussianBlur(imgGray, (7,7),0) # 커널 사이즈(항상 홀수)�
 cv2.imshow('Blur', imgBlur)
 cv2.waitKey(0)
 
-# 3. 엣지 디텍터 만들기(canny edge detector)
+# 3. 엣지 디텍터 만들기(canny edge detector) - 윤곽선 추출하는 것
 imgCanny = cv2.Canny(img,100,100) # 임계치를 정의해야한다. 100,100으로 정의해보도록 하자.
 
 cv2.imshow('Canny image', imgCanny)
@@ -26,12 +26,13 @@ cv2.waitKey(0)
 # 4. dilation
 kernel = np.ones((5,5), np.uint8) # Dilation은 커널()을 정의해야한다. 5*5사이즈의 1로만 구성된 행렬을 정의한다.
 
-imgDilation = cv2.dilate(imgCanny, kernel, iterations = 1)# 마지막 인자 - 두께. 커널이 몇 이터레이션을 돌 것인지)
+imgDilation = cv2.dilate(imgCanny, kernel, iterations = 1) # 마지막 인자 - 두께. 커널이 몇 이터레이션을 돌 것인지)
+# 3번에서 추출한 윤곽선을 두껍게 하는 것
 # iterations이 많아지면 더 두꺼워진다.
 cv2.imshow('Dilation Image', imgDialation)
 cv2.waitKey(0)
 
-# erosion (opposite of dilation)
+# erosion (opposite of dilation, 두꺼워진 윤곽선에 침식? 효과를 주는 것)
 imgEroded = cv2.erode(imgDilation, kernel, iterations = 1)
 cv2.imshow('Eroded img', imgEroded)
 cv2.waitKey(0)

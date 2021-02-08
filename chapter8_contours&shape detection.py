@@ -20,7 +20,7 @@ imgBlur = cv2.GaussianBlur(imgGray, (7,7),1)
 imgCanny = cv2.Canny(imgBlur, 50, 50)
 imgBlank = np.zeros_like(img)
 
-imgStack = functions.stackImages(0.6,([img, imgGray, imgBlur],
+imgStack = functions.stackImages(0.6,([img, imgGray, imgBlur],\
                                     [imgCanny, imgBlank, imgBlank]))
 
 cv2.imshow('stack', imgStack)
